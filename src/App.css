@@ -1,0 +1,91 @@
+#moviesForCategory {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+    gap: 20px;
+    justify-content: center;
+}
+
+ul.outline-none {
+    gap: 0;
+}
+
+@media (max-width: 1024px) {
+    #moviesForCategory {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+    }
+}
+
+@media (max-width: 425px) {
+    #moviesForCategory {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 100px));
+    }
+}
+
+/* Header */
+
+#portada {
+    height: 300px;
+}
+
+#img {
+    top: 0;
+    background: linear-gradient(180deg, transparent 50%, #000 100%), linear-gradient(0deg, transparent 50%, #000 102%), url('./assets/img/colectivo1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+#peliculas {
+    z-index: 100;
+}
+
+#content-pelis {
+    z-index: 100;
+}
+
+section.container {
+    z-index: 100;
+}
+
+/* Carrousel */
+
+.swiper-button-prev::after {
+    font-weight: bold;
+    color: #fff;
+}
+
+.swiper-button-next::after {
+    font-weight: bold;
+    color: #fff;
+}
+
+
+@media (max-width: 769px) {
+    .swiper-button-prev::after {
+        display: none;
+    }
+
+    .swiper-button-next::after {
+        display: none;
+    }
+}
+
+
+
+/* Reproductor */
+
+.container {
+    width: 100%;
+    max-width: 1024px;
+    padding: 0 1em;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+    margin: 2em 0;
+}
