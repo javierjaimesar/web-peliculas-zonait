@@ -1,20 +1,25 @@
-import { useEffect, useState } from 'react';
+import { DataContext } from '../context/DataContext';
+
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import colectivo from '../img/colectivo1.jpg';
 import video from '../video/trailer.mp4';
 
 import searchIcon from '../icon/search.svg';
 import backIcon from '../icon/back.svg';
 
 function ViewMovie() {
-  const [movieTitle, setMovieTitle] = useState('')
+  const { findMovie } = useContext(DataContext)
+
+  const [movieId, setMovieId] = useState('')
+  const [movie, setMovie] = useState([])
   const params = useParams();
 
   useEffect(() => {
-    const movie = params.movieTitle
-    setMovieTitle(movie)
+    const movieIdParams = params.movieId
+    setMovieId(movieIdParams)
+    setMovie((findMovie(movieIdParams))[0])
   }, [])
 
   const videoJsOptions = {
@@ -42,20 +47,20 @@ function ViewMovie() {
             <source src={video} type="video/mp4" />
           </video>
           <div className='px-4 flex flex-col gap-2 justify-start max-w-5xl'>
-            <h3 className='text-2xl font-semibold' >{movieTitle}</h3>
+            <h3 className='text-2xl font-semibold' >{movie?.title}</h3>
             <div className='flex gap-2 text-base text-zinc-400'>
-              <p>2015</p>
-              <p>-</p>
-              <p>126 min</p>
+              <p>{movie?.year}</p>
+              <p> - </p>
+              <p>{movie?.duration}</p>
             </div>
             <div className='flex flex-col gap-2 max-w-7xl'>
               <p className='text-lg'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum obcaecati pariatur, natus mollitia voluptatum delectus dolorem similique, harum dolore minus corporis labore! Architecto minus cumque dolor omnis similique totam ratione?
+                {movie.plot}
               </p>
               <div className='text-sm text-zinc-400'>
-                <p><b> Actores:</b> Robert Downey Jr., Gwyneth Paltrow, Terrence Howard</p>
-                <p><b>Escritores:</b> Mark Fergus, Hawk Ostby, Art Marcum</p>
-                <p><b>Director:</b> Jon Favreau</p>
+                <p><b>Actores: </b>{movie.actors}</p>
+                <p><b>Escritores: </b>{movie.writer}</p>
+                <p><b>Director: </b>{movie.director}</p>
               </div>
             </div>
           </div>

@@ -1,3 +1,5 @@
+import { DataContext } from '../context/DataContext';
+
 // import Footer from './assets/components/Footer';
 import CategoryCarrousel from '../components/CategoryCarrousel';
 import MoviesForCategory from '../components/MoviesForCategory';
@@ -9,19 +11,20 @@ import { NextUIProvider } from "@nextui-org/react";
 import { movies } from '../services/pelis';
 
 import '../../App.css'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 function Index() {
+  const { categorys, allMovies } = useContext(DataContext)
 
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todas');
 
-  const allCategorys = movies.map((movie) => {
-    return ((movie.Genre).split(','))[0]
-  })
+  // const allCategorys = movies.map((movie) => {
+  //   return ((movie.Genre).split(','))[0]
+  // })
 
-  const categorias = allCategorys.filter((categoria, index) => {
-    return allCategorys.indexOf(categoria) === index;
-  })
+  // const categorias = allCategorys.filter((categoria, index) => {
+  //   return allCategorys.indexOf(categoria) === index;
+  // })
 
   const cambiarValor = (nuevaCategoria) => {
     setCategoriaSeleccionada(nuevaCategoria)
@@ -40,13 +43,13 @@ function Index() {
             </div>
             <div id='content-pelis' className='h-full'>
               <div id='peliculas' className='h-max'>
-                <Categorys categorias={categorias} cambiarValor={cambiarValor} ></Categorys>
+                <Categorys categorias={categorys} cambiarValor={cambiarValor} ></Categorys>
                 {
                   (categoriaSeleccionada === 'Todas')
-                    ? categorias.map((categoria) => (
-                      <CategoryCarrousel key={categoria} category={categoria} movies={movies} />
+                    ? categorys.map((categoria) => (
+                      <CategoryCarrousel key={categoria} category={categoria} movies={allMovies} />
                     ))
-                    : <MoviesForCategory key={categoriaSeleccionada} category={categoriaSeleccionada} movies={movies} />
+                    : <MoviesForCategory category={categoriaSeleccionada} />
                 }
               </div>
             </div>

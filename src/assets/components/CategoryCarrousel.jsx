@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { DataContext } from '../context/DataContext';
+
 import MovieCard from './MovieCard';
 import { Navigation, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,6 +10,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 function CategoryCarrousel({ category, movies }) {
+  const { allMovies } = useContext(DataContext)
+
   // console.log(category);
   return (
     <section className="container ps-2 sm:ps-5 min-w-full" >
@@ -50,13 +55,13 @@ function CategoryCarrousel({ category, movies }) {
         onSlideChange={() => console.log('slide change')}
       >
         {
-          movies.map((movie) => {
+          allMovies.map((movie) => {
             // console.log(((movie.Genre).split(', '))[1])
             return (
-              <div key={movie.imdbID}>
+              <div key={movie.id}>
                 {
-                  (category === ((movie.Genre).split(', '))[0] || category === ((movie.Genre).split(', '))[1] || category === ((movie.Genre).split(', '))[2]) &&
-                  <SwiperSlide key={movie.imdbID} className='min-w-0' >
+                  (category === ((movie.genre).split(', '))[0] || category === ((movie.genre).split(', '))[1] || category === ((movie.genre).split(', '))[2]) &&
+                  <SwiperSlide key={movie.id} className='min-w-0' >
                     <MovieCard movie={movie} category={category} />
                   </SwiperSlide>
                 }
