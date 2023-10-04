@@ -2,12 +2,9 @@ import { DataContext } from '../context/DataContext';
 
 import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 import video from '../video/trailer.mp4';
-
-import searchIcon from '../icon/search.svg';
-import backIcon from '../icon/back.svg';
 
 function ViewMovie() {
   const { findMovie } = useContext(DataContext)
@@ -33,17 +30,10 @@ function ViewMovie() {
 
   return (
     <div className='bg-black h-screen'>
-      <nav className='flex justify-between items-center py-5 px-5'>
-        <Link to={'/'} >
-          <img src={backIcon} alt={backIcon} />
-        </Link>
-        <Link to={'/search/'} >
-          <img src={searchIcon} alt={searchIcon} />
-        </Link>
-      </nav>
-      <div className='flex flex-col items-center text-white'>
-        <div>
-          <video controls autoPlay>
+      <Navbar />
+      <div className='bg-black flex flex-col items-center text-white'>
+        <div className='flex flex-col justify-center'>
+          <video controls autoPlay className='max-h-96'>
             <source src={video} type="video/mp4" />
           </video>
           <div className='px-4 flex flex-col gap-2 justify-start max-w-5xl'>

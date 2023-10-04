@@ -1,15 +1,12 @@
 import { DataContext } from '../context/DataContext';
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 
-// import Footer from './assets/components/Footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import CategoryCarrousel from '../components/CategoryCarrousel';
 import MoviesForCategory from '../components/MoviesForCategory';
 import NavbarSearch from '../components/NavbarSearch.jsx';
 import Categorys from '../components/Categorys';
-
-import searchIcon from '../icon/search.svg';
-import backIcon from '../icon/back.svg';
 
 import { NextUIProvider } from "@nextui-org/react";
 
@@ -38,14 +35,7 @@ function Index() {
     <NextUIProvider>
       <div className='bg-black min-h-screen text-white relative'>
         <main id='main'>
-          <nav className='flex justify-between items-center py-5 px-5 w-full absolute top-0 z-10'>
-            <Link to={'/'} >
-              <img src={backIcon} alt={backIcon} />
-            </Link>
-            <Link to={'/search'} >
-              <img src={searchIcon} alt={searchIcon} />
-            </Link>
-          </nav>
+          <Navbar position={'absolute'} />
           {/* <NavbarSearch></NavbarSearch> */}
           <div id='content-img' className='relative'>
             <div id='portada'>
@@ -65,9 +55,7 @@ function Index() {
             </div>
           </div>
         </main>
-        <footer className='h-40'>
-          FOOTER
-        </footer>
+        <Footer/>
       </div>
     </NextUIProvider>
   );

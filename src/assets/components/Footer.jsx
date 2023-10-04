@@ -1,8 +1,12 @@
 function Footer() {
   return (
-    <div className="bg-gray-950 h-20 flex justify-center items-center">
-        <p>Footer</p>
-    </div>
+    <footer className='flex flex-col justify-center items-center gap-5 p-10'>
+      <div className='flex flex-col items-center'>
+        <p>WAY ON</p>
+        <p>Entretenimiento a bordo</p>
+      </div>
+      <a href='#' >CONTÁCTENOS</a>
+    </footer>
   )
 }
 
