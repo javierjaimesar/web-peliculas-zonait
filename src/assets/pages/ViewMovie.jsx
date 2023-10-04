@@ -33,12 +33,12 @@ function ViewMovie() {
 
   return (
     <div className='bg-black h-screen'>
-      <nav className='flex justify-between py-5 px-10'>
+      <nav className='flex justify-between items-center py-5 px-5'>
         <Link to={'/'} >
           <img src={backIcon} alt={backIcon} />
         </Link>
-        <Link to={'/'} >
-          <img src={searchIcon} alt={searchIcon} className='pr-2 py-1' />
+        <Link to={'/search/'} >
+          <img src={searchIcon} alt={searchIcon} />
         </Link>
       </nav>
       <div className='flex flex-col items-center text-white'>
