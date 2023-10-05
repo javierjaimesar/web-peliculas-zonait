@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useContext, useCallback } from 'react';
-import { useMovies } from '../hook/useMovies'
+import { useState,useEffect,useContext,useCallback,useRef } from 'react';
+import { DataContext } from '../context/DataContext';
 import { Movies } from '../components/Movies';
 import {Input} from "@nextui-org/react";
 
@@ -7,47 +7,26 @@ import debounce from 'just-debounce-it'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-function useSearch() {
+export function SearchMovies () {
     const [search, setSearch] = useState('')
-    const [error, setError] = useState(null)
+    const [movies, setMovies] = useState([])
+    const firstRender = useRef(false)
+    const { getMovies } = useContext(DataContext)
 
     useEffect(() => {
-        if (search === '') {
-            return
-        }
-        if (search === "") {
-            setError("No se puede buscar la pelicula vacía")
-            return
-        }
-        if (search.match(/^\d+$/)) {
-            setError("No se puede buscar una pelicula con un número")
-            return
-        }
-        if (search.length < 3) {
-            setError("La busqueda debe tener al menos 3 caracteres")
-            return
-        }
-
-        setError(null)
-    }, [search])
-
-    return { search, setSearch, error }
-}
-
-function Search() {
-    const { search, setSearch, error } = useSearch()
-    const { movies, getMovies, loading } = useMovies({ search })
-    const firstRender = useRef(false)
+        console.log(search);
+        setMovies(getMovies(search));
+    },[search])
 
     const debounceGetMovies = useCallback(
         debounce((search) => {
-            getMovies({ search })
+            getMovies(search)
         }, 500)
         , [getMovies])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        getMovies({ search })
+        setMovies(getMovies(search))
     }
 
     const handleChange = (e) => {
@@ -67,11 +46,10 @@ function Search() {
                             <Input type="email" variant={"underlined"} placeholder="Buscar..." 
                             onChange={handleChange} value={search} className='w-full max-w-2xl pb-3 placeholder:text-white text-white' />    
                         </form>
-                        {error && <p className='text-center' style={{ color: 'red' }}>{error}</p>}
                     </header>
                     <main className='main text-center pt-8 px-4'>
                         {
-                            firstRender.current && <Movies movies={movies} loading={loading} />
+                            firstRender.current && <Movies movies={movies} />
                         }
                     </main>
                 </div>
@@ -81,4 +59,4 @@ function Search() {
     )
 }
 
-export default Search
+export default SearchMovies

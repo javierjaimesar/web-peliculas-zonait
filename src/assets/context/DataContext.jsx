@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useRef, useState, useCallback } from 'react';
 
 import { movies } from '../services/pelis'
 
@@ -34,11 +34,45 @@ export function DataProvider({ children }) {
         })
     }
 
+    const getMovies = (search) => {
+        const newSearch = search.toUpperCase()
+
+        if(search === '') return
+
+        return allMovies.filter((movie) => {
+            return ((movie.title).toUpperCase().includes(newSearch) || 
+            (movie.director).toUpperCase().includes(newSearch) ||  
+            (movie.actors).toUpperCase().includes(newSearch));
+        })
+    }
+
+    // const getMovies = useCallback(async ({ search }) => {
+    //     const [movies, setMovies] = useState([])
+    //     const [loading, setLoading] = useState(false)
+    //     const [, setError] = useState(null)
+    //     const busquedaAnterior = useRef(search)
+
+    //     if (search === busquedaAnterior.current) return
+
+    //     try {
+    //         setLoading(true)
+    //         setError(null)
+    //         busquedaAnterior.current = search
+    //         const newMovies = await searchMovies({ search })
+    //         setMovies(newMovies)
+    //     } catch (e) {
+    //         setError(e.message)
+    //     } finally {
+    //         setLoading(false)
+    //     }
+    // }, [])
+
     return (
         <DataContext.Provider value={{
             allMovies,
             categorys,
-            findMovie
+            findMovie,
+            getMovies
         }}>
             {children}
         </DataContext.Provider>
