@@ -29,7 +29,7 @@ ul.outline-none {
 
 #img {
     top: 0;
-    background: linear-gradient(180deg, transparent 50%, #000 100%), linear-gradient(0deg, transparent 50%, #000 102%), url('./assets/img/colectivo1.jpg');
+    background: linear-gradient(180deg, transparent 50%, #000 100%), linear-gradient(0deg, transparent 50%, #000 102%), url('./assets/img/colectivo2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -92,6 +92,27 @@ section.container {
 
 
 /* Search */
+
+.movies{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+    gap: 20px;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+@media (max-width: 1024px) {
+    .movies {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+    }
+}
+
+
+@media (max-width: 425px) {
+    .movies {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 100px));
+    }
+}
 
 .search-input{
     width: 100%;

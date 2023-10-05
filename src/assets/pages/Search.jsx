@@ -60,26 +60,29 @@ function Search() {
     }
 
     return (
-        <div className='bg-black page text-white'>
-            <Navbar position={''} />
-            <header className='mx-auto'>
-                <form className='flex justify-center form' onSubmit={handleSubmit}>
-                    <Input type="email" variant={"underlined"} placeholder="Enter your email" 
-                    onChange={handleChange} value={search} className='w-full max-w-2xl py-3 placeholder-white text-white' />    
-                    {/* <input className='' style={{
-                        border: '1px solid transparent',
-                        borderColor: error ? 'red' : 'transparent'
-                    }} onChange={handleChange} value={search} name='query' placeholder='Avengers, etc.' /> */}
-                </form>
-                {error && <p className='text-center' style={{ color: 'red' }}>{error}</p>}
-            </header>
-
-            <main className='main min-h-screen'>
-                {
-                    firstRender.current && <Movies movies={movies} loading={loading} />
-                }
-            </main>
-            <Footer />
+        <div className='min-h-screen'>
+            <div className='flex flex-col h-full min-h-screen bg-black text-white'>
+                <Navbar position={''} logo={false} />
+                <div className='body-wrapper'>
+                    <header className='bg-zinc-950 p-5'>
+                        <form className='flex justify-center text-5xl form' onSubmit={handleSubmit}>
+                            <Input type="email" variant={"underlined"} placeholder="Buscar..." 
+                            onChange={handleChange} value={search} className='w-full max-w-2xl pb-3 placeholder:text-white text-white' />    
+                            {/* <input className='' style={{
+                                border: '1px solid transparent',
+                                borderColor: error ? 'red' : 'transparent'
+                            }} onChange={handleChange} value={search} name='query' placeholder='Avengers, etc.' /> */}
+                        </form>
+                        {error && <p className='text-center' style={{ color: 'red' }}>{error}</p>}
+                    </header>
+                    <main className='main text-center pt-8 px-4'>
+                        {
+                            firstRender.current && <Movies movies={movies} loading={loading} />
+                        }
+                    </main>
+                </div>
+                <Footer />
+            </div>
         </div>
     )
 }

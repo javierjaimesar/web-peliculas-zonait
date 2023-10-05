@@ -1,4 +1,5 @@
 import { useState } from "react"
+import MovieCard from '../components/MovieCard';
 
 function MostrarPeliculas ({movies}) {
   const [hover,setHover] = useState(false)
@@ -8,19 +9,15 @@ function MostrarPeliculas ({movies}) {
   } 
   
   return (
-    <ul className="movies">
+    <div className="movies">
       {
         movies.map((movie) => {
           return (  
-            <li className="movie" key={movie.id}>
-              <img src={movie.image} alt={movie.Title} />
-              <h3>{movie.title}</h3>
-              <p>Año: {movie.year}</p>
-            </li>
+            <MovieCard movie={movie} key={movie.id} />
           )
         })
       }
-    </ul>
+    </div>
     )
   }
 

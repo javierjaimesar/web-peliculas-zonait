@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function MovieCard({ movie, category }) {
+function MovieCard({ movie }) {
   return (
     <div className="w-auto" >
       <Link to={`/view/${movie.id}`}>

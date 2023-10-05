@@ -35,7 +35,7 @@ function Index() {
     <NextUIProvider>
       <div className='bg-black min-h-screen text-white relative'>
         <main id='main'>
-          <Navbar position={'absolute'} />
+          <Navbar position={'absolute'} logo={true} />
           {/* <NavbarSearch></NavbarSearch> */}
           <div id='content-img' className='relative'>
             <div id='portada'>
