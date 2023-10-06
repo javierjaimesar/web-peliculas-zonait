@@ -14,7 +14,7 @@ function CategoryCarrousel({ category, movies }) {
 
   // console.log(category);
   return (
-    <section className="container ps-2 sm:ps-5 min-w-full" >
+    <section className="container ps-2 pr-0 sm:ps-5 min-w-full" >
       <h2 className="text-xl font-semibold pb-2 text-white">{category}</h2>
       {/* <div id='carrousel' className='glider'>
         {
