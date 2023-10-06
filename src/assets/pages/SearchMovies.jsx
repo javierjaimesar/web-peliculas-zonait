@@ -43,7 +43,7 @@ export function SearchMovies () {
                 <div className='body-wrapper'>
                     <header className='bg-zinc-950 p-5'>
                         <form className='flex justify-center text-5xl form' onSubmit={handleSubmit}>
-                            <Input type="email" variant={"underlined"} placeholder="Buscar..." 
+                            <Input type="email" variant={"underlined"} placeholder="Titulo, Actor, Escritor..." 
                             onChange={handleChange} value={search} className='w-full max-w-2xl pb-3 placeholder:text-white text-white' />    
                         </form>
                     </header>

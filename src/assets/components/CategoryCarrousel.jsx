@@ -9,20 +9,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-function CategoryCarrousel({ category, movies }) {
+function CategoryCarrousel({ category }) {
   const { allMovies } = useContext(DataContext)
 
   // console.log(category);
   return (
     <section className="container ps-2 pr-0 sm:ps-5 min-w-full" >
       <h2 className="text-xl font-semibold pb-2 text-white">{category}</h2>
-      {/* <div id='carrousel' className='glider'>
-        {
-          movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))
-        }
-      </div> */}
       <Swiper
         modules={[Navigation, A11y]}
         spaceBetween={10}
@@ -71,7 +64,7 @@ function CategoryCarrousel({ category, movies }) {
         }
 
       </Swiper>
-      <div className='my-6 pr-2 sm:pr-5'>
+      <div className='mt-6 pr-2 sm:pr-5'>
         <hr className='border-gray-600' />
       </div>
     </section >

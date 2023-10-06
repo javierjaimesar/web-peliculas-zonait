@@ -24,12 +24,14 @@ ul.outline-none {
 /* Header */
 
 #portada {
-    height: 400px;
+    height: 350px;
 }
 
 #img {
     top: 0;
-    background: linear-gradient(180deg, transparent 50%, #000 100%), linear-gradient(0deg, transparent 50%, #000 102%), url('./assets/img/colectivo2.jpg');
+    background: linear-gradient(180deg, transparent 40%, #000 100%), 
+    linear-gradient(0deg, transparent 40%, #000 102%), 
+    url('./assets/img/colectivo2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

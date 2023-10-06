@@ -47,7 +47,7 @@ function Index() {
                 {
                   (categoriaSeleccionada === 'Todas')
                     ? categorys.map((categoria) => (
-                      <CategoryCarrousel key={categoria} category={categoria} movies={allMovies} />
+                      <CategoryCarrousel key={categoria} category={categoria} />
                     ))
                     : <MoviesForCategory category={categoriaSeleccionada} />
                 }
