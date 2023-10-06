@@ -30,17 +30,17 @@ function Footer() {
           </div>
         </div>
         <div className="flex gap-5 items-center justify-between sm:flex-col">
-          <div className="flex justify-center">
-            <a href="https://www.zonait.com.ar/" target="_blank">
-              <img src={zonaIt} alt="zonaIt" className="w-28" />
-            </a>
-          </div>
-          <div className="flex justify-end sm:w-full j gap-2">
+          <div className="flex justify-end sm:w-full gap-3">
             <a href="https://www.facebook.com/ZonaIT.com.ar" target="_blank">
-              <img src={facebook} alt="facebook" className="w-7" />
+              <img src={facebook} alt="facebook" className="w-6" />
             </a>
             <a href="https://www.instagram.com/zonaitoficial" target="_blank">
-              <img src={instagram} alt="instagram" className="w-7" />
+              <img src={instagram} alt="instagram" className="w-6" />
+            </a>
+          </div>
+          <div className="flex justify-center">
+            <a href="https://www.zonait.com.ar/" target="_blank">
+              <img src={zonaIt} alt="zonaIt" className="w-32" />
             </a>
           </div>
         </div>
