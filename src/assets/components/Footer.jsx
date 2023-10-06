@@ -9,7 +9,7 @@ import zonaIt from '../img/zonaIt.png';
 
 function Footer() {
   return (
-    <footer className='flex flex-col justify-center bg-zinc-950 p-10'>
+    <footer className='flex flex-col justify-center bg-zinc-950 p-5 sm:p-10'>
       <div className="flex justify-between flex-wrap gap-5">
         <div className='flex flex-col gap-1'>
           <div className="flex items-center gap-2">
@@ -29,13 +29,13 @@ function Footer() {
             <p>San Martín 1051 - San Miguel de Tucumán, Tucumán</p>
           </div>
         </div>
-        <div className="flex gap-5 items-center sm:flex-col  sm:justify-between">
+        <div className="flex gap-5 items-center justify-between sm:flex-col">
           <div className="flex justify-center">
             <a href="https://www.zonait.com.ar/" target="_blank">
-              <img src={zonaIt} alt="zonaIt" className="w-20" />
+              <img src={zonaIt} alt="zonaIt" className="w-28" />
             </a>
           </div>
-          <div className="flex gap-2 justify-center">
+          <div className="flex justify-end sm:w-full j gap-2">
             <a href="https://www.facebook.com/ZonaIT.com.ar" target="_blank">
               <img src={facebook} alt="facebook" className="w-7" />
             </a>
