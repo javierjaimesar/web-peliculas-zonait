@@ -9,7 +9,7 @@ import zonaIt from '../img/zonaIt.png';
 
 function Footer() {
   return (
-    <footer className='flex flex-col justify-center bg-zinc-950 p-5 sm:p-10'>
+    <footer className='flex flex-col justify-center bg-zinc-950 p-5 sm:px-10 sm:py-14'>
       <div className="flex justify-between flex-wrap gap-5 sm:gap-0 w-full">
         <div className='flex flex-col gap-1'>
           <div className="flex items-center gap-2">
