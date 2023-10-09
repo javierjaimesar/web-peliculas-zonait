@@ -33,7 +33,7 @@ function ViewMovie() {
     <div className='min-h-screen'>
       <div className='flex flex-col h-full min-h-screen bg-black text-white'>
           <Navbar position={''} logo={false} />
-          <div className='body-wrapper'>
+          <div className='body-wrapper mb-10'>
             <div className='bg-black flex flex-col items-center text-white'>
               <div className='flex flex-col justify-center'>
                 <video controls autoPlay className='max-h-96'>
@@ -51,9 +51,18 @@ function ViewMovie() {
                       {movie.plot}
                     </p>
                     <div className='text-sm text-zinc-400'>
-                      <p><b>Actores: </b>{movie.actors}</p>
-                      <p><b>Escritores: </b>{movie.writer}</p>
-                      <p><b>Director: </b>{movie.director}</p>
+                      {
+                        movie.actors !== 'N/A' && <p><b>Actores: </b>{movie.actors}</p>
+
+                      }
+                      {
+                        movie.writer !== 'N/A' && <p><b>Escritor: </b>{movie.writer}</p>
+
+                      }
+                      {
+                        movie.director !== 'N/A' && <p><b>Director: </b>{movie.director}</p>
+
+                      }
                     </div>
                   </div>
                 </div>

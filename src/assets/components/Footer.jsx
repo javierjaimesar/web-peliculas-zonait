@@ -18,11 +18,11 @@ function Footer() {
           </div>
           <div className="flex items-center gap-2">
             <img src={phone} alt='phone' className="w-6 p-0.5" />
-            <p>381 526-4501</p>
+            <p>381 207-0566</p>
           </div>
           <div className="flex items-center gap-2">
             <img src={gmail} alt="gmail" className="w-6 p-0.5" />
-            <p>gdelarosa@zonait.com.ar</p>
+            <p>info@zonait.com.ar</p>
           </div>
           <div className="flex items-center gap-2">
             <img src={location} alt="location" className="w-6" />
