@@ -11,10 +11,11 @@ import {
   BigPlayButton
 } from 'video-react';
 
-export function VideoPlayer ({video}) {
+export function VideoPlayer ({video,video1}) {
   return (
-    <Player autoPlay src={video} >
-      {/* <source src={video} /> */}
+    <Player autoPlay fluid={true}>
+      <source src={video} />
+      <source src={video1} />
 
       <ControlBar autoHide={true}>
         <ReplayControl seconds={10} order={1.1} />

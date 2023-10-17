@@ -97,7 +97,11 @@ section.container {
   background-color: transparent !important;
 }
 
-.video-react-big-play-button{
+.video-react-menu-button-popup.video-react-volume-menu-button-vertical{
+  z-index: 100 !important;
+}
+
+.video-react-menu .video-react-big-play-button .video-react-menu-content{
     display: none !important;
 }
 

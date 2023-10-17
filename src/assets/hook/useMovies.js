@@ -1,20 +1,16 @@
-import { useState, useRef, useCallback } from 'react'
-import { searchMovies } from '../services/movies'
+import { useState, useCallback } from 'react'
+import { allMovies } from '../services/movies'
 
-export function useMovies({ search }) {
+export function useMovies() {
     const [movies, setMovies] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [, setError] = useState(null)
-    const busquedaAnterior = useRef(search)
 
-    const getMovies = useCallback(async ({ search }) => {
-        if (search === busquedaAnterior.current) return
-
+    const getMovies = useCallback(async () => {
         try {
             setLoading(true)
             setError(null)
-            busquedaAnterior.current = search
-            const newMovies = await searchMovies({ search })
+            const newMovies = await allMovies()
             setMovies(newMovies)
         } catch (e) {
             setError(e.message)
@@ -22,6 +18,5 @@ export function useMovies({ search }) {
             setLoading(false)
         }
     }, [])
-
-    return { movies: movies, getMovies, loading }
+    return { movies, getMovies, loading }
 }

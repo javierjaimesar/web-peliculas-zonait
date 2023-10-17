@@ -1,7 +1,7 @@
 import { Select, SelectItem } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
-export default function Categorys({ categorias, cambiarValor }) {
+export default function Categorys({ categorys, cambiarValor }) {
   const variants = ["flat", "bordered", "underlined", "faded"];
 
   const [category, setCategory] = useState('Todas')
@@ -27,9 +27,9 @@ export default function Categorys({ categorias, cambiarValor }) {
           <SelectItem key={'Todas'} value={'Todas'} onClick={handleChange}>
             {'Todas'}
           </SelectItem>
-          {categorias.map((categoria) => (
-            <SelectItem key={categoria} value={categoria} onClick={handleChange}>
-              {categoria}
+          {categorys?.map((category) => (
+            <SelectItem key={category} value={category} onClick={handleChange}>
+              {category}
             </SelectItem>
           ))}
         </Select>

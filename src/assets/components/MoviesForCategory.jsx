@@ -2,11 +2,16 @@ import { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 
 import MovieCard from './MovieCard';
+import { useEffect } from 'react';
 
 function MoviesForCategory({ category }) {
-    const { allMovies } = useContext(DataContext)
+    const { movies, getMovies } = useContext(DataContext)
 
-    const forCategory = allMovies.filter((movie) => {
+    useEffect(() => {
+        getMovies()
+    },[getMovies])
+
+    const forCategory = movies.filter((movie) => {
         return (category === ((movie.genre).split(', '))[0] || category === ((movie.genre).split(', '))[1] || category === ((movie.genre).split(', '))[2])
     })
 

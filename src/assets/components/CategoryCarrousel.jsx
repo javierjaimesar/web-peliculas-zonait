@@ -1,20 +1,25 @@
-import { useContext } from 'react';
-import { DataContext } from '../context/DataContext';
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
-import MovieCard from './MovieCard';
-import { Navigation, A11y } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import MovieCard from "./MovieCard";
+import { Navigation, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { useEffect } from "react";
+import Skeleton from "./Skeleton";
 
-function CategoryCarrousel({ category }) {
-  const { allMovies } = useContext(DataContext)
+function CategoryCarrousel({ category, loading }) {
+  const { movies, getMovies } = useContext(DataContext);
 
-  // console.log(category);
+  useEffect(() => {
+    getMovies();
+  }, [getMovies]);
+
   return (
-    <section className="container ps-2 pr-0 sm:ps-5 min-w-full" >
+    <section className="container ps-2 pr-0 sm:ps-5 min-w-full">
       <h2 className="text-xl font-semibold pb-2 text-white">{category}</h2>
       <Swiper
         modules={[Navigation, A11y]}
@@ -45,29 +50,32 @@ function CategoryCarrousel({ category }) {
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         // onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        onSlideChange={() => console.log("slide change")}
       >
-        {
-          allMovies.map((movie) => {
-            // console.log(((movie.Genre).split(', '))[1])
-            return (
-              <div key={movie.id}>
-                {
-                  (category === ((movie.genre).split(', '))[0] || category === ((movie.genre).split(', '))[1] || category === ((movie.genre).split(', '))[2]) &&
-                  <SwiperSlide key={movie.id} className='min-w-0' >
-                    <MovieCard movie={movie} category={category} />
-                  </SwiperSlide>
-                }
-              </div>
-            )
-          })
-        }
-
+        {loading
+          ? movies?.map((movie) => (
+              <SwiperSlide key={movie.id}>
+                <Skeleton />
+              </SwiperSlide>
+            ))
+          : movies?.map((movie) => {
+              return (
+                <div key={movie.id}>
+                  {(category === movie.genre.split(", ")[0] ||
+                    category === movie.genre.split(", ")[1] ||
+                    category === movie.genre.split(", ")[2]) && (
+                    <SwiperSlide key={movie.id} className="min-w-0">
+                      <MovieCard movie={movie} category={category} />
+                    </SwiperSlide>
+                  )}
+                </div>
+              );
+            })}
       </Swiper>
-      <div className='mt-6 pr-2 sm:pr-5'>
-        <hr className='border-gray-600' />
+      <div className="mt-6 pr-2 sm:pr-5">
+        <hr className="border-gray-600" />
       </div>
-    </section >
+    </section>
   );
 }
 

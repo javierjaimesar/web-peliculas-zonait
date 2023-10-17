@@ -4,22 +4,25 @@ import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import VideoPlayer from '../components/VideoPlayer';
+import VideoPlayer from "../components/VideoPlayer";
 
 import video from "../video/trailer.mp4";
+import video1 from "../video/unidad2.mp4";
 
 function ViewMovie() {
-  const { findMovie } = useContext(DataContext);
+  const { getMovies, findMovie } = useContext(DataContext);
 
   const [movieId, setMovieId] = useState("");
   const [movie, setMovie] = useState([]);
   const params = useParams();
 
   useEffect(() => {
+    getMovies();
     const movieIdParams = params.movieId;
     setMovieId(movieIdParams);
+    console.log(movieIdParams);
     setMovie(findMovie(movieIdParams)[0]);
-  }, []);
+  }, [ getMovies, params.movieId]);
 
   const videoJsOptions = {
     autoplay: true,
@@ -42,7 +45,7 @@ function ViewMovie() {
               {/* <video controls autoPlay className="max-h-96">
                 <source src={video} type="video/mp4" />
               </video> */}
-              <VideoPlayer video={video} ></VideoPlayer>
+              <VideoPlayer video={video} video1={video1}></VideoPlayer>
               <div className="px-4 flex flex-col gap-2 justify-start max-w-5xl">
                 <h3 className="text-2xl font-semibold">{movie?.title}</h3>
                 <div className="flex gap-2 text-base text-zinc-400">

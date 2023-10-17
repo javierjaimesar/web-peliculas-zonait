@@ -6,10 +6,13 @@ import {Input} from "@nextui-org/react";
 import debounce from 'just-debounce-it'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { DataContext } from '../context/DataContext';
 
 function useSearch() {
     const [search, setSearch] = useState('')
     const [error, setError] = useState(null)
+
+    console.log('hola');
 
     useEffect(() => {
         if (search === '') {
@@ -36,7 +39,8 @@ function useSearch() {
 
 function Search() {
     const { search, setSearch, error } = useSearch()
-    const { movies, getMovies, loading } = useMovies({ search })
+    // const { movies, getMovies, loading } = useMovies({ search })
+    const { movies, getMovies, loading } = useContext(DataContext)
     const firstRender = useRef(false)
 
     const debounceGetMovies = useCallback(
@@ -45,10 +49,10 @@ function Search() {
         }, 500)
         , [getMovies])
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        getMovies({ search })
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     getMovies({ search })
+    // }
 
     const handleChange = (e) => {
         firstRender.current = true
@@ -63,7 +67,7 @@ function Search() {
                 <Navbar position={''} logo={false} />
                 <div className='body-wrapper'>
                     <header className='bg-zinc-950 p-5'>
-                        <form className='flex justify-center text-5xl form' onSubmit={handleSubmit}>
+                        <form className='flex justify-center text-5xl form'>
                             <Input type="email" variant={"underlined"} placeholder="Buscar..." 
                             onChange={handleChange} value={search} className='w-full max-w-2xl pb-3 placeholder:text-white text-white' />    
                         </form>
