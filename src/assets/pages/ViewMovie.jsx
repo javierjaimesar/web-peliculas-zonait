@@ -12,14 +12,12 @@ import video1 from "../video/unidad2.mp4";
 function ViewMovie() {
   const { getMovies, findMovie } = useContext(DataContext);
 
-  const [movieId, setMovieId] = useState("");
   const [movie, setMovie] = useState([]);
   const params = useParams();
 
   useEffect(() => {
     getMovies();
     const movieIdParams = params.movieId;
-    setMovieId(movieIdParams);
     console.log(movieIdParams);
     setMovie(findMovie(movieIdParams)[0]);
   }, [ getMovies, params.movieId]);

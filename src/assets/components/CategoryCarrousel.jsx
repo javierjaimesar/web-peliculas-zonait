@@ -8,15 +8,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useEffect } from "react";
+
 import Skeleton from "./Skeleton";
 
-function CategoryCarrousel({ category, loading }) {
-  const { movies, getMovies } = useContext(DataContext);
+function CategoryCarrousel({ category }) {
+  const { movies, loading } = useContext(DataContext);
 
-  useEffect(() => {
-    getMovies();
-  }, [getMovies]);
+  console.log("hola");
 
   return (
     <section className="container ps-2 pr-0 sm:ps-5 min-w-full">

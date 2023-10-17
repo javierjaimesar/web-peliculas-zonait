@@ -11,29 +11,29 @@ export function SearchMovies() {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
   const firstRender = useRef(false);
-  const { searchMovies, getMovies, loading } = useContext(DataContext);
+  const { getMovies, searchMovies, loading } = useContext(DataContext);
 
   useEffect(() => {
     setMovies(searchMovies(search));
   }, [search, searchMovies]);
 
   const debounceGetMovies = useCallback(
-    debounce((search) => {
-      getMovies(search);
+    debounce(() => {
+      getMovies();
     }, 500),
     [getMovies]
   );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setMovies(getMovies(search));
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setMovies(getMovies(search));
+  // };
 
   const handleChange = (e) => {
     firstRender.current = true;
     const value = e.target.value;
     setSearch(value);
-    debounceGetMovies(value);
+    debounceGetMovies();
   };
 
   return (
@@ -42,10 +42,7 @@ export function SearchMovies() {
         <Navbar position={""} logo={false} />
         <div className="body-wrapper">
           <header className="bg-zinc-950 p-5">
-            <form
-              className="flex justify-center text-5xl form"
-              onSubmit={handleSubmit}
-            >
+            <form className="flex justify-center text-5xl form">
               <Input
                 type="email"
                 variant={"underlined"}
