@@ -6,7 +6,7 @@ import ViewMovie from "./assets/pages/ViewMovie";
 import SearchMovies from "./assets/pages/SearchMovies";
 import { useEffect } from "react";
 import { useContext } from "react";
-import Categorys from "./assets/components/Categorys";
+// import Index from "./assets/components/Index";
 
 function App() {
   const { getMovies } = useContext(DataContext);
@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Index />}></Route>
         <Route path="/view/:movieId" element={<ViewMovie />}></Route>
         <Route path="/search" element={<SearchMovies />}></Route>
-        <Route path="/:category" element={<Categorys />} ></Route>
+        <Route path="/:category" element={<Index />} ></Route>
       </Routes>
     </BrowserRouter>
   );

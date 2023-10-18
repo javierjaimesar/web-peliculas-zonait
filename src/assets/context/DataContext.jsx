@@ -1,10 +1,11 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { useMovies } from "../hook/useMovies";
 
 export const DataContext = createContext();
 
 export function DataProvider({ children }) {
   const { movies, loading, getMovies } = useMovies("");
+  const [category, setCategory] = useState("Todas");
 
   const findMovie = (id) => {
     return movies.filter((movie) => {
@@ -34,6 +35,8 @@ export function DataProvider({ children }) {
         getMovies,
         findMovie,
         searchMovies,
+        category,
+        setCategory,
       }}
     >
       {children}

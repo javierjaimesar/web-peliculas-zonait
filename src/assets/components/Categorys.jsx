@@ -1,24 +1,31 @@
-import { useEffect, useState } from "react";
+import { DataContext } from "../context/DataContext";
+import { useEffect, useContext, useState } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Categorys({ categorys, cambiarValor }) {
-  const [category, setCategory] = useState("Todas");
-  const history = useHistory();
+  const { category, setCategory } = useContext(DataContext);
+  const [value, setValue] = useState(new Set([]));
+  const categoryDefault = ["Todas"];
+  const navigate = useNavigate();
+
+  const allCategorys = ["Todas", ...categorys];
 
   useEffect(() => {
     cambiarValor(category);
   }, [category]);
 
-  const handleChange = (e) => {
+  console.log("asdasdasd");
+
+  const handleClick = (e) => {
     const nuevoValor = e.target.innerText;
     setCategory(nuevoValor);
 
-    // Genera la ruta dinámica con el nuevo valor
-    const dynamicRoute = `/${nuevoValor}`;
-
-    // Navega a la ruta dinámica
-    history.push(dynamicRoute);
+    if (nuevoValor === "Todas") {
+      navigate(`/`);
+    } else {
+      navigate(`/${nuevoValor}`);
+    }
   };
 
   return (
@@ -27,12 +34,16 @@ export default function Categorys({ categorys, cambiarValor }) {
         key={"bordered"}
         className="flex w-full flex-wrap md:flex-nowrap m-0 gap-4"
       >
-        <Select variant={"bordered"} label="Categoría" className="max-w-xs">
-          <SelectItem key={"Todas"} value={"Todas"} onClick={handleChange}>
-            {"Todas"}
-          </SelectItem>
-          {categorys?.map((category) => (
-            <SelectItem key={category} value={category} onClick={handleChange}>
+        <Select
+          variant={"bordered"}
+          label="Categoría"
+          className="max-w-xs"
+          selectedKeys={[category]}
+          onSelectionChange={setValue}
+          onClose={() => setValue(category)}
+        >
+          {allCategorys?.map((category) => (
+            <SelectItem key={category} value={category} onClick={handleClick}>
               {category}
             </SelectItem>
           ))}

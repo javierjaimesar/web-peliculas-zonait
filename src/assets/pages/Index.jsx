@@ -33,7 +33,11 @@ function Index() {
     <NextUIProvider>
       <div className="bg-black min-h-screen text-white relative">
         <main id="main">
-          <Navbar position={"absolute"} logo={true} />
+          <Navbar
+            position={"absolute"}
+            logo={true}
+            cambiarValor={cambiarValor}
+          />
           <div id="content-img" className="relative">
             <div id="portada">
               <div id="img"></div>
