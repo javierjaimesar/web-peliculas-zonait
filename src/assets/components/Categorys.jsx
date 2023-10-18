@@ -1,7 +1,7 @@
 import { DataContext } from "../context/DataContext";
 import { useEffect, useContext, useState } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function Categorys({ categorys, cambiarValor }) {
   const { category, setCategory } = useContext(DataContext);
@@ -9,13 +9,19 @@ export default function Categorys({ categorys, cambiarValor }) {
   const categoryDefault = ["Todas"];
   const navigate = useNavigate();
 
+  const params = useParams();
+
   const allCategorys = ["Todas", ...categorys];
 
   useEffect(() => {
-    cambiarValor(category);
+    if(JSON.stringify(params) === "{}"){
+      setCategory('Todas')
+      cambiarValor('Todas')
+    }else{
+      setCategory(params.category)
+      cambiarValor(params.category);
+    }
   }, [category]);
-
-  console.log("asdasdasd");
 
   const handleClick = (e) => {
     const nuevoValor = e.target.innerText;

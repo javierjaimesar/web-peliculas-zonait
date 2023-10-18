@@ -27,7 +27,14 @@ function Index() {
     setCategoriaSeleccionada(nuevaCategoria);
   };
 
-  console.log(categorys);
+  const categorysDefault = [
+    "Categorias",
+    "Categorias",
+    "Categorias",
+    "Categorias",
+    "Categorias",
+    "Categorias",
+  ];
 
   return (
     <NextUIProvider>
@@ -49,13 +56,23 @@ function Index() {
                   cambiarValor={cambiarValor}
                 ></Categorys>
                 {categoriaSeleccionada === "Todas" ? (
-                  categorys.map((category) => (
-                    <CategoryCarrousel
-                      key={category}
-                      category={category}
-                      loading={loading}
-                    />
-                  ))
+                  loading ? (
+                    categorysDefault.map((category,index) => (
+                      <CategoryCarrousel
+                        key={index}
+                        category={category}
+                        loading={loading}
+                      />
+                    ))
+                  ) : (
+                    categorys.map((category) => (
+                      <CategoryCarrousel
+                        key={category}
+                        category={category}
+                        loading={loading}
+                      />
+                    ))
+                  )
                 ) : (
                   <MoviesForCategory category={categoriaSeleccionada} />
                 )}

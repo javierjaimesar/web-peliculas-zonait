@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 
 import MovieCard from "./MovieCard";
+import Skeleton from "./Skeleton";
 
 function MoviesForCategory({ category }) {
-  const { movies } = useContext(DataContext);
+  const { movies, loading } = useContext(DataContext);
 
   const forCategory = movies.filter((movie) => {
     return (
@@ -20,9 +21,13 @@ function MoviesForCategory({ category }) {
     <>
       <h2 className="text-2xl font-semibold px-4 text-white">{category}</h2>
       <div id="moviesForCategory" className="p-4 z-50">
-        {forCategory.map((movie) => {
-          return <MovieCard key={movie.id} category={category} movie={movie} />;
-        })}
+        {loading
+          ? [1, 2, 3, 4, 5, 6, 7, 8].map((index) => <Skeleton key={index} />)
+          : forCategory.map((movie) => {
+              return (
+                <MovieCard key={movie.id} category={category} movie={movie} />
+              );
+            })}
       </div>
     </>
   );

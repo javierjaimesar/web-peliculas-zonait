@@ -15,6 +15,8 @@ function ViewMovie() {
   const [movie, setMovie] = useState([]);
   const params = useParams();
 
+  console.log(params);
+
   useEffect(() => {
     getMovies();
     const movieIdParams = params.movieId;

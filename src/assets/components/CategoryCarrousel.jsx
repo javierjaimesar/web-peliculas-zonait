@@ -14,7 +14,7 @@ import Skeleton from "./Skeleton";
 function CategoryCarrousel({ category }) {
   const { movies, loading } = useContext(DataContext);
 
-  console.log("hola");
+  const prueba = true;
 
   return (
     <section className="container ps-2 pr-0 sm:ps-5 min-w-full">
@@ -50,9 +50,10 @@ function CategoryCarrousel({ category }) {
         // onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
+        {/* Mostrar el esqueleto por defecto mientras se carga */}
         {loading
-          ? movies?.map((movie) => (
-              <SwiperSlide key={movie.id}>
+          ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+              <SwiperSlide key={index}>
                 <Skeleton />
               </SwiperSlide>
             ))
