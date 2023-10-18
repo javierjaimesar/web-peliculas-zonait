@@ -24,16 +24,16 @@ function ViewMovie() {
     setMovie(findMovie(movieIdParams)[0]);
   }, [ getMovies, params.movieId]);
 
-  const videoJsOptions = {
-    autoplay: true,
-    controls: true,
-    sources: [
-      {
-        src: video,
-        type: "video/mp4",
-      },
-    ],
-  };
+  // const videoJsOptions = {
+  //   autoplay: true,
+  //   controls: true,
+  //   sources: [
+  //     {
+  //       src: video,
+  //       type: "video/mp4",
+  //     },
+  //   ],
+  // };
 
   return (
     <div className="min-h-screen">
