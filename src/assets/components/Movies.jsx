@@ -22,6 +22,5 @@ export function MoviesVerify({ movies }) {
 }
 
 export function Movies({ movies, loading }) {
-  console.log(loading);
   return loading ? <Spinner /> : <MoviesVerify movies={movies} />;
 }

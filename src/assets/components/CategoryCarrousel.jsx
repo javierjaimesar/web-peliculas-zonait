@@ -50,7 +50,6 @@ function CategoryCarrousel({ category }) {
         // onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
-        {/* Mostrar el esqueleto por defecto mientras se carga */}
         {loading
           ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
               <SwiperSlide key={index}>

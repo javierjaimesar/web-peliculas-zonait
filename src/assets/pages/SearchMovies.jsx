@@ -14,14 +14,15 @@ export function SearchMovies() {
   const { getMovies, searchMovies, loading } = useContext(DataContext);
 
   useEffect(() => {
-    setMovies(searchMovies(search));
-  }, [search, searchMovies]);
+    debounceGetMovies();
+  }, [search]);
 
   const debounceGetMovies = useCallback(
     debounce(() => {
       getMovies();
+      setMovies(searchMovies(search));
     }, 500),
-    [getMovies]
+    [getMovies, search]
   );
 
   // const handleSubmit = (e) => {
@@ -44,6 +45,7 @@ export function SearchMovies() {
           <header className="bg-zinc-950 p-5">
             <form className="flex justify-center text-5xl form">
               <Input
+                autofocus
                 type="email"
                 variant={"underlined"}
                 placeholder="Titulo, Actor, Escritor..."
@@ -53,7 +55,7 @@ export function SearchMovies() {
               />
             </form>
           </header>
-          <main className="main text-center pt-8 px-4">
+          <main className="main text-center py-8 px-4">
             {firstRender.current && (
               <Movies movies={movies} loading={loading} />
             )}
