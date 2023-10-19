@@ -1,3 +1,4 @@
+import Spinner from "./Spinner";
 import MovieCard from "../components/MovieCard";
 
 function MostrarPeliculas({ movies }) {
@@ -22,5 +23,5 @@ export function MoviesVerify({ movies }) {
 
 export function Movies({ movies, loading }) {
   console.log(loading);
-  return loading ? <p>Cargando...</p> : <MoviesVerify movies={movies} />;
+  return loading ? <Spinner /> : <MoviesVerify movies={movies} />;
 }

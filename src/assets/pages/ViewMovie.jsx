@@ -10,19 +10,22 @@ import video from "../video/trailer.mp4";
 import video1 from "../video/unidad2.mp4";
 
 function ViewMovie() {
-  const { getMovies, findMovie } = useContext(DataContext);
+  const { findMovie, getMovies } = useContext(DataContext);
 
-  const [movie, setMovie] = useState([]);
+  // const [movie, setMovie] = useState([]);
   const params = useParams();
+  const movieIdParams = params.movieId;
 
-  console.log(params);
+  console.log(movieIdParams);
 
-  useEffect(() => {
-    getMovies();
-    const movieIdParams = params.movieId;
-    console.log(movieIdParams);
-    setMovie(findMovie(movieIdParams)[0]);
-  }, [ getMovies, params.movieId]);
+  const movie = findMovie(movieIdParams)[0];
+
+  // useEffect(() => {
+  //   getMovies();
+  //   console.log(movieIdParams);
+  //   console.log(findMovie(movieIdParams)[0]);
+  //   console.log(movie);
+  // }, [movie]);
 
   // const videoJsOptions = {
   //   autoplay: true,
@@ -54,24 +57,24 @@ function ViewMovie() {
                   <p>{movie?.duration}</p>
                 </div>
                 <div className="flex flex-col gap-2 max-w-7xl">
-                  <p className="text-lg">{movie.plot}</p>
+                  <p className="text-lg">{movie?.plot}</p>
                   <div className="text-sm text-zinc-400">
-                    {movie.actors !== "N/A" && (
+                    {movie?.actors !== "N/A" && (
                       <p>
                         <b>Actores: </b>
-                        {movie.actors}
+                        {movie?.actors}
                       </p>
                     )}
-                    {movie.writer !== "N/A" && (
+                    {movie?.writer !== "N/A" && (
                       <p>
                         <b>Escritor: </b>
-                        {movie.writer}
+                        {movie?.writer}
                       </p>
                     )}
-                    {movie.director !== "N/A" && (
+                    {movie?.director !== "N/A" && (
                       <p>
                         <b>Director: </b>
-                        {movie.director}
+                        {movie?.director}
                       </p>
                     )}
                   </div>

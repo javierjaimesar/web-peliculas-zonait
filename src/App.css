@@ -161,6 +161,10 @@ section.container {
   grid-row: 2;
 }
 
+.video-react-big-play-button{
+  display: none !important;
+}
+
 /* Search */
 
 .movies {
