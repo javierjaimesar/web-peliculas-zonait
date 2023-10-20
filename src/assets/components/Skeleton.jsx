@@ -1,9 +1,6 @@
 function Skeleton() {
   return (
-    <div
-      role="status"
-      className="shadow animate-pulse"
-    >
+    <div role="status" className="shadow animate-pulse">
       <div className="flex items-center justify-center mb-4 bg-gray-300 rounded dark:bg-gray-700 shadow-lg aspect-[5/7] rounded-md">
         <svg
           className="w-10 h-10 text-gray-200 dark:text-gray-600"
@@ -16,6 +13,8 @@ function Skeleton() {
           <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
         </svg>
       </div>
+      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 mb-2"></div>
+      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-9/12"></div>
     </div>
   );
 }
