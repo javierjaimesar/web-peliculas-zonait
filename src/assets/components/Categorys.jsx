@@ -6,11 +6,9 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function Categorys({ categorys, cambiarValor }) {
   const { category, setCategory } = useContext(DataContext);
   const [value, setValue] = useState(new Set([]));
-  const categoryDefault = ["Todas"];
+  // const categoryDefault = ["Todas"];
   const navigate = useNavigate();
-
   const params = useParams();
-
   const allCategorys = ["Todas", ...categorys];
 
   useEffect(() => {

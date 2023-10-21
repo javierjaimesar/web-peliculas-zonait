@@ -22,23 +22,23 @@ function CategoryCarrousel({ category }) {
 
   return (
     <section className="container min-w-full p-0">
-      <h2 className="text-base md:text-lg xl:text-xl font-semibold text-white px-2 sm:px-2 md:px-4 lg:px-8 xl:px-12">
+      <h2 className="text-base md:text-lg xl:text-xl font-semibold text-white pt-2 px-2 sm:px-2 md:px-4 lg:px-8 xl:px-12">
         {category}
       </h2>
       <Swiper
         modules={[Navigation, A11y]}
         spaceBetween={10}
-        slidesPerView={3.3}
+        slidesPerView={3.2}
         slidesPerGroup={3}
         breakpoints={{
           640: {
             modules: [A11y],
-            slidesPerView: 4.3,
+            slidesPerView: 4.2,
             slidesPerGroup: 4,
           },
-          800: {
+          768: {
             modules: [A11y],
-            slidesPerView: 5.3,
+            slidesPerView: 5,
             slidesPerGroup: 5,
           },
           1024: {
@@ -47,7 +47,7 @@ function CategoryCarrousel({ category }) {
           },
           1280: {
             slidesPerView: 8,
-            slidesPerGroup: 7,
+            slidesPerGroup: 8,
           },
         }}
         navigation

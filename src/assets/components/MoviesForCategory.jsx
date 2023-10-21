@@ -25,7 +25,7 @@ function MoviesForCategory({ category }) {
           ? [1, 2, 3, 4, 5, 6, 7, 8].map((index) => <Skeleton key={index} />)
           : forCategory.map((movie) => {
               return (
-                <MovieCard key={movie.id} category={category} movie={movie} />
+                <MovieCard key={movie.id} movie={movie} />
               );
             })}
       </div>
