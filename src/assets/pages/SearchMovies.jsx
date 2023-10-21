@@ -14,16 +14,14 @@ export function SearchMovies() {
   const { getMovies, searchMovies, loading } = useContext(DataContext);
 
   useEffect(() => {
-    debounceGetMovies();
-  }, [search]);
+    getMovies();
+  }, []);
 
   const debounceGetMovies = useCallback(
-    debounce(() => {
-      getMovies();
-      setMovies(searchMovies(search));
-    }, 500),
-    [getMovies, search]
-  );
+    debounce((value) => {
+      console.log(searchMovies(value));
+      setMovies(searchMovies(value));
+    }, 400),[]);
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -34,7 +32,7 @@ export function SearchMovies() {
     firstRender.current = true;
     const value = e.target.value;
     setSearch(value);
-    debounceGetMovies();
+    debounceGetMovies(value);
   };
 
   return (
@@ -46,7 +44,7 @@ export function SearchMovies() {
             <form className="flex justify-center text-5xl form">
               <Input
                 autofocus
-                type="email"
+                type="text"
                 variant={"underlined"}
                 placeholder="Titulo, Actor, Escritor..."
                 onChange={handleChange}

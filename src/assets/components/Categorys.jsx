@@ -35,7 +35,7 @@ export default function Categorys({ categorys, cambiarValor }) {
   };
 
   return (
-    <div className="w-full flex flex-col gap-4 p-4">
+    <div className="w-full flex flex-col gap-4 px-2 sm:px-2 md:px-4 lg:px-8 xl:px-12">
       <div
         key={"bordered"}
         className="flex w-full flex-wrap md:flex-nowrap m-0 gap-4"

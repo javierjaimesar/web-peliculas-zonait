@@ -17,7 +17,7 @@ export function Navbar({ position, logo, cambiarValor }) {
   return (
     <nav
       className={
-        "flex justify-between items-center py-5 px-5 w-full top-0 z-10 " +
+        "flex justify-between items-center py-5 px-2 sm:px-2 md:px-4 lg:px-8 xl:px-12 w-full top-0 z-10 " +
         position
       }
     >
