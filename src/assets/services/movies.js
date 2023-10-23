@@ -4,7 +4,7 @@ export const allMovies = async () => {
     const apiJavier = 'https://api-peliculas-5173.onrender.com/api/movies'
 
     try {
-        const response = await fetch(apiMartin)
+        const response = await fetch(apiJavier)
         const movies = await response.json()
 
         return movies?.map((movie) => ({
