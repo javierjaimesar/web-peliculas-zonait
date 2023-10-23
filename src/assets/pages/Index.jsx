@@ -1,5 +1,5 @@
 import { DataContext } from "../context/DataContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -22,6 +22,8 @@ function Index() {
   const categorys = allCategorys.filter((categoria, index) => {
     return allCategorys.indexOf(categoria) === index;
   });
+
+  categorys.sort();
 
   const cambiarValor = (nuevaCategoria) => {
     setCategoriaSeleccionada(nuevaCategoria);

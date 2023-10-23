@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../context/DataContext";
 import MovieCard from "./MovieCard";
 import { Navigation, A11y } from "swiper/modules";
@@ -73,7 +73,6 @@ function CategoryCarrousel({ category }) {
                     category === movie.genre.split(", ")[2] ? (
                       <SwiperSlide
                         key={movie.id}
-                        className="min-w-0"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -84,7 +83,7 @@ function CategoryCarrousel({ category }) {
                 );
               })}
       </Swiper>
-      <div className="mt-6 px-2 sm:px-2 md:px-4 lg:px-8 xl:px-12">
+      <div className="mt-1 px-2 sm:px-2 md:px-4 lg:px-8 xl:px-12">
         <hr className="border-gray-600" />
       </div>
     </section>

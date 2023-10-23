@@ -1,4 +1,4 @@
-import { Route, Routes, HashRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { DataContext } from "./assets/context/DataContext";
 
 import Index from "./assets/pages/Index";
@@ -16,14 +16,14 @@ function App() {
   }, [getMovies]);
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />}></Route>
         <Route path="/view/:movieId" element={<ViewMovie />}></Route>
         <Route path="/search" element={<SearchMovies />}></Route>
-        <Route path="/:category" element={<Index />} ></Route>
+        <Route path="/:category" element={<Index />}></Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

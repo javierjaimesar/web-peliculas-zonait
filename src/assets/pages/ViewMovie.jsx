@@ -1,6 +1,6 @@
 import { DataContext } from "../context/DataContext";
 
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -10,13 +10,14 @@ import video from "../video/trailer.mp4";
 import video1 from "../video/unidad2.mp4";
 
 function ViewMovie() {
-  const { findMovie, getMovies } = useContext(DataContext);
+  const { findMovie } = useContext(DataContext);
 
   // const [movie, setMovie] = useState([]);
   const params = useParams();
   const movieIdParams = params.movieId;
 
   console.log(movieIdParams);
+  console.log(findMovie(movieIdParams));
 
   const movie = findMovie(movieIdParams)[0];
 

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useCallback, useRef } from "react";
+import { useState, useContext, useCallback, useRef } from "react";
 import { DataContext } from "../context/DataContext";
 import { Movies } from "../components/Movies";
 import { Input } from "@nextui-org/react";
@@ -11,27 +11,24 @@ export function SearchMovies() {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
   const firstRender = useRef(false);
-  const { getMovies, searchMovies, loading } = useContext(DataContext);
-
-  useEffect(() => {
-    getMovies();
-  }, []);
+  const { searchMovies } = useContext(DataContext);
+  const [loading, setLoading] = useState(false);
 
   const debounceGetMovies = useCallback(
     debounce((value) => {
       console.log(searchMovies(value));
       setMovies(searchMovies(value));
-    }, 400),[]);
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setMovies(getMovies(search));
-  // };
+      setLoading(false);
+    }, 400),
+    []
+  );
 
   const handleChange = (e) => {
+    setLoading(true);
     firstRender.current = true;
     const value = e.target.value;
     setSearch(value);
+    console.log(value);
     debounceGetMovies(value);
   };
 

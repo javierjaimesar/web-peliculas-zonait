@@ -4,7 +4,7 @@ import { useMovies } from "../hook/useMovies";
 export const DataContext = createContext();
 
 export function DataProvider({ children }) {
-  const { movies, loading, getMovies } = useMovies("");
+  const { movies, loading, getMovies } = useMovies();
   const [category, setCategory] = useState("Todas");
 
   useEffect(() => {
@@ -19,8 +19,11 @@ export function DataProvider({ children }) {
 
   const searchMovies = (search) => {
     const newSearch = search.toUpperCase();
+    getMovies();
 
-    if (search === "") return;
+    // if (search === "") return;
+
+    console.log(movies);
 
     return movies.filter((movie) => {
       const { title, director, actors } = movie;
