@@ -19,9 +19,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />}></Route>
+        <Route path="/:category" element={<Index />}></Route>
         <Route path="/view/:movieId" element={<ViewMovie />}></Route>
         <Route path="/search" element={<SearchMovies />}></Route>
-        <Route path="/:category" element={<Index />}></Route>
       </Routes>
     </BrowserRouter>
   );

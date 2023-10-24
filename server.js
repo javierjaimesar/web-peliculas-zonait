@@ -4,11 +4,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware para servir archivos estáticos del cliente (Vite)
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname)));
 
 // Middleware para manejar rutas en el servidor
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
