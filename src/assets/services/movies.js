@@ -2,6 +2,7 @@ export const allMovies = async () => {
 
     const apiMartin = 'http://dispositivos.ingenieriadelnoa.com.ar:8381/pelis'
     const apiJavier = 'https://api-peliculas-5173.onrender.com/api/movies'
+    const apiLocal = 'http://localhost:3000/api/movies'
 
     try {
         const response = await fetch(apiJavier)
